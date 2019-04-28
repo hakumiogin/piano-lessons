@@ -39,7 +39,7 @@ function register_lessons_post_type(){
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor', 'author', 'thumbnail', 'excerpt', 'revisions', 'comments' )
+		'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments' )
 	);
 
 	register_post_type( "lessons", $args );
@@ -73,5 +73,28 @@ function register_genre_taxonomy(){
 
 }
 
+function register_teacher_taxonomy(){
+		$labels = array(
+		'name'              => _x( 'Teacher', 'taxonomy general name', 'piano-lessons' ),
+		'singular_name'     => _x( 'Teacher', 'taxonomy singular name', 'piano-lessons' ),
+		'search_items'      => __( 'Search Teachers', 'piano-lessons' ),
+		'all_items'         => __( 'All Teachers', 'piano-lessons' ),
+		'edit_item'         => __( 'Edit Teacher', 'piano-lessons' ),
+		'update_item'       => __( 'Update Teacher', 'piano-lessons' ),
+		'add_new_item'      => __( 'Add New Teacher', 'piano-lessons' ),
+		'new_item_name'     => __( 'Rename Teacher', 'piano-lessons' ),
+		'menu_name'         => __( 'Teacher', 'piano-lessons' ),
+		'description'       => __( 'Bio', 'piano-lessons')
+	);
+	$args = array(
+		'labels'             => $labels,
+		'hierarchical'      => false,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'meta_box_cb'       => 'teacher_meta_box_callback', //callback in metabox.php
+	);
+	register_taxonomy( 'teacher', 'lessons', $args );
+
+}
 
 ?>
