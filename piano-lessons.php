@@ -9,4 +9,41 @@
  */
 
 
+// Abort if this file is called directly
+if (!defined('WPINC')) {
+	die;
+}
+
+define('PIANO_LESSONS_VERSION', '0.1');
+
+function pl_init(){
+	pl_load_dependencies();
+	pl_set_admin_hooks();
+	pl_set_public_hooks();
+	pl_enque_scripts();
+	pl_enque_styles();
+}
+
+function pl_load_dependencies(){
+
+}
+
+function pl_set_admin_hooks(){
+
+}
+
+function pl_set_public_hooks(){
+
+}
+
+function pl_enque_scripts(){
+
+}
+
+function pl_enque_styles(){
+
+}
+
+pl_init();
+
 ?>
