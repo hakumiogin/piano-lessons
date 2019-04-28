@@ -46,6 +46,30 @@ function register_lessons_post_type(){
 }
 
 function register_genre_taxonomy(){
+	$labels = array(
+		'name'              => _x( 'Genres', 'taxonomy general name', 'piano-lessons' ),
+		'singular_name'     => _x( 'Genre', 'taxonomy singular name', 'piano-lessons' ),
+		'search_items'      => __( 'Search Genres', 'piano-lessons' ),
+		'all_items'         => __( 'All Genres', 'piano-lessons' ),
+		'parent_item'       => __( 'Parent Genre', 'piano-lessons' ),
+		'parent_item_colon' => __( 'Parent Genre:', 'piano-lessons' ),
+		'edit_item'         => __( 'Edit Genre', 'piano-lessons' ),
+		'update_item'       => __( 'Update Genre', 'piano-lessons' ),
+		'add_new_item'      => __( 'Add New Genre', 'piano-lessons' ),
+		'new_item_name'     => __( 'New Genre Name', 'piano-lessons' ),
+		'menu_name'         => __( 'Genre', 'piano-lessons' ),
+	);
+
+	$args = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => array( 'slug' => _x('genre', 'rewrite slug', 'piano-lessons')),
+	);
+
+	register_taxonomy( 'genre', array( 'lessons' ), $args );
 
 }
 
