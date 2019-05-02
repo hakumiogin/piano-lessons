@@ -39,7 +39,7 @@ function register_lessons_post_type(){
 		'has_archive'        => true,
 		'hierarchical'       => false,
 		'menu_position'      => null,
-		'supports'           => array( 'title', 'editor', 'thumbnail', 'excerpt', 'revisions', 'comments' )
+		'supports'           => array( 'title', 'editor', 'thumbnail', 'revisions' )
 	);
 
 	register_post_type( "lessons", $args );
@@ -69,7 +69,7 @@ function register_genre_taxonomy(){
 		'rewrite'           => array( 'slug' => _x('genre', 'rewrite slug', 'piano-lessons')),
 	);
 
-	register_taxonomy( 'genre', array( 'lessons' ), $args );
+	register_taxonomy( 'pl_genre', array( 'lessons' ), $args );
 
 }
 
@@ -87,13 +87,13 @@ function register_teacher_taxonomy(){
 		'description'       => __( 'Bio', 'piano-lessons')
 	);
 	$args = array(
-		'labels'             => $labels,
+		'labels'            => $labels,
 		'hierarchical'      => false,
 		'show_ui'           => true,
 		'show_admin_column' => true,
 		'meta_box_cb'       => 'teacher_meta_box_callback', //callback in metabox.php
 	);
-	register_taxonomy( 'teacher', 'lessons', $args );
+	register_taxonomy( 'pl_teacher', array('lessons'), $args );
 
 }
 
