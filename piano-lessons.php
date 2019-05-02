@@ -15,6 +15,7 @@ if (!defined('WPINC')) {
 }
 
 define('PIANO_LESSONS_VERSION', '0.1');
+define('PL_DIR_PATH', plugin_dir_path( __FILE__ ) );
 
 function pl_init(){
 	pl_load_dependencies();
@@ -25,11 +26,20 @@ function pl_init(){
 }
 
 function pl_load_dependencies(){
-
+	require_once PL_DIR_PATH.'/admin/register.php';
+	require_once PL_DIR_PATH.'/admin/metabox.php';
+	require_once PL_DIR_PATH.'/admin/shortcode.php';
 }
 
 function pl_set_admin_hooks(){
+	add_action('init', 'register_lessons_post_type'); //register.php
+	add_action('init', 'register_genre_taxonomy'); //register.php
+	add_action('init', 'register_teacher_taxonomy'); //register.php
 
+	add_action('add_meta_boxes', 'meta_box_handler'); //metabox.php
+	add_action('save_post', 'pl_save_post'); //metabox.php
+
+	add_shortcode('lessons', 'lessons_shortcode'); //shortcode.php
 }
 
 function pl_set_public_hooks(){
@@ -45,5 +55,9 @@ function pl_enque_styles(){
 }
 
 pl_init();
+
+register_activation_hook( __FILE__, 'activate_pl_plugin' );
+register_deactivation_hook( __FILE__, 'deactivate_pl_plugin' );
+
 
 ?>
