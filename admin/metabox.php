@@ -9,6 +9,7 @@ function meta_box_handler(){
         __( 'Difficulty', 'piano-lessons' ),
         'difficulty_meta_box_callback',
         'lessons'
+        'pl_lessons'
     );
 }
 

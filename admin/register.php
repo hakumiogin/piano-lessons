@@ -43,6 +43,7 @@ function register_lessons_post_type(){
 	);
 
 	register_post_type( "lessons", $args );
+	register_post_type( "pl_lessons", $args );
 }
 
 function register_genre_taxonomy(){
@@ -70,6 +71,7 @@ function register_genre_taxonomy(){
 	);
 
 	register_taxonomy( 'pl_genre', array( 'lessons' ), $args );
+	register_taxonomy( 'pl_genre', array( 'pl_lessons' ), $args );
 
 }
 
