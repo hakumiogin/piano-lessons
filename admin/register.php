@@ -93,7 +93,13 @@ function register_teacher_taxonomy(){
 		'show_admin_column' => true,
 		'meta_box_cb'       => 'teacher_meta_box_callback', //callback in metabox.php
 	);
-	register_taxonomy( 'pl_teacher', array('lessons'), $args );
+	register_taxonomy( 'pl_teacher', array('pl_lessons'), $args );
+
+	//register some default names for ease of testing the plugin.
+	$teachers = array('Phil', 'Jeff', 'Dion', 'Dan', 'Devon', 'Cale', 'Zak', 'Neara', 'Joanna', 'Kristin', 'Joe', 'JC');
+	foreach ($teachers as $teacher){
+		wp_insert_term($teacher, 'pl_teacher');
+	}
 
 }
 
