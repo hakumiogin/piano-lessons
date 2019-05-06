@@ -42,7 +42,6 @@ function register_lessons_post_type(){
 		'supports'           => array( 'title', 'editor', 'thumbnail', 'revisions' )
 	);
 
-	register_post_type( "lessons", $args );
 	register_post_type( "pl_lessons", $args );
 }
 
@@ -70,7 +69,6 @@ function register_genre_taxonomy(){
 		'rewrite'           => array( 'slug' => _x('genre', 'rewrite slug', 'piano-lessons')),
 	);
 
-	register_taxonomy( 'pl_genre', array( 'lessons' ), $args );
 	register_taxonomy( 'pl_genre', array( 'pl_lessons' ), $args );
 
 }
