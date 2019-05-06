@@ -1,4 +1,7 @@
 <?php
+if (!defined('WPINC')) {
+	die;
+}
 
 function meta_box_handler(){
 	add_meta_box(
