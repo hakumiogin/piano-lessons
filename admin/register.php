@@ -42,7 +42,7 @@ function register_lessons_post_type(){
 		'supports'           => array( 'title', 'editor', 'thumbnail', 'revisions' )
 	);
 
-	register_post_type( "lessons", $args );
+	register_post_type( "pl_lessons", $args );
 }
 
 function register_genre_taxonomy(){
@@ -69,7 +69,7 @@ function register_genre_taxonomy(){
 		'rewrite'           => array( 'slug' => _x('genre', 'rewrite slug', 'piano-lessons')),
 	);
 
-	register_taxonomy( 'pl_genre', array( 'lessons' ), $args );
+	register_taxonomy( 'pl_genre', array( 'pl_lessons' ), $args );
 
 }
 
@@ -93,7 +93,13 @@ function register_teacher_taxonomy(){
 		'show_admin_column' => true,
 		'meta_box_cb'       => 'teacher_meta_box_callback', //callback in metabox.php
 	);
-	register_taxonomy( 'pl_teacher', array('lessons'), $args );
+	register_taxonomy( 'pl_teacher', array('pl_lessons'), $args );
+
+	//register some default names for ease of testing the plugin.
+	$teachers = array('Phil', 'Jeff', 'Dion', 'Dan', 'Devon', 'Cale', 'Zak', 'Neara', 'Joanna', 'Kristin', 'Joe', 'JC');
+	foreach ($teachers as $teacher){
+		wp_insert_term($teacher, 'pl_teacher');
+	}
 
 }
 

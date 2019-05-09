@@ -21,8 +21,6 @@ function pl_init(){
 	pl_load_dependencies();
 	pl_set_admin_hooks();
 	pl_set_public_hooks();
-	pl_enque_scripts();
-	pl_enque_styles();
 }
 
 function pl_load_dependencies(){
@@ -39,25 +37,19 @@ function pl_set_admin_hooks(){
 	add_action('add_meta_boxes', 'meta_box_handler'); //metabox.php
 	add_action('save_post', 'pl_save_post'); //metabox.php
 
-	add_shortcode('lessons', 'lessons_shortcode'); //shortcode.php
+	add_action('wp_enqueue_scripts', 'pl_add_styles'); //this file
 }
 
 function pl_set_public_hooks(){
-
+	add_shortcode('lessons', 'lessons_shortcode'); //shortcode.php
 }
 
-function pl_enque_scripts(){
 
-}
-
-function pl_enque_styles(){
-
+function pl_add_styles(){
+	wp_register_style('lessons_shortcode_style', plugins_url("/piano-lessons/public/css/shortcode.css"));
 }
 
 pl_init();
-
-register_activation_hook( __FILE__, 'activate_pl_plugin' );
-register_deactivation_hook( __FILE__, 'deactivate_pl_plugin' );
 
 
 ?>

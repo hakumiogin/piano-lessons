@@ -1,0 +1,44 @@
+.lesson_container{
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
+	height: 100%;
+	align-items: stretch;
+	font-family: helvetica, arial, sans;
+}
+.lesson_item{
+	color: #fff;
+	font-size:15px;
+	width: 24%;
+	margin: .4%;
+	background-color: #000;
+	padding: 0px 10px;
+}
+.lesson_item a {
+	color: #fff;
+}
+.lesson_difficulty {
+	float: right;
+	padding: 3px 3px;
+	background-color: #ff0000;
+	text-transform: uppercase;
+	font-size: 10px;
+	font-weight: 600;
+}
+.lesson_item img {w
+	idth: 100%;
+	height: auto;
+}
+@media only screen and (max-width: 600px){ /*Mobile phones*/
+	.lesson_item {width: 99%;}
+}
+@media only screen and (min-width: 600px){ /*Tablets phones*/
+	.lesson_item {width: 49%;}
+
+}
+@media only screen and (min-width: 960px){ /*Desktops*/
+	.lesson_item {width: 32%;}
+}
+@media only screen and (min-width: 1200px){ /* big Desktops */
+	.lesson_item {width: 24%;}
+}
