@@ -20,6 +20,7 @@ function lessons_shortcode($atts){
 	foreach( $recent_lessons as $recent ){
 		$post_teachers = get_the_terms($recent["ID"], "pl_teacher");
 		$teacher = $post_teachers[0]->name;
+		$teacher_url = get_term_link($post_teachers[0]);
 
 		$difficulty = get_post_meta($recent["ID"], 'pl_difficulty', true);
 
@@ -31,15 +32,15 @@ function lessons_shortcode($atts){
 		$last_key = end($genre_keys);
 		$genres = '';
 		foreach ($post_genres as $key => $term){
-			$genres = $genres.'<span class="genre">'.$term ->name."</span>";
+			$genres = $genres.'<span class="genre"><a href="'.get_term_link( $term ).'">'.$term->name."</a></span>";
 			$genres = $key === $last_key ? $genres : $genres. ", ";
 		}
 
 ?>
 		<div class="lesson_item">
 			<?php echo $thumbnail; ?>
-			<div class="lesson_teacher"><?php echo $teacher;?></div>
 			<div class="lesson_difficulty"><?php echo $difficulty;?></div>
+			<div class="lesson_teacher">By <a href="<?php echo $teacher_url; ?>"><?php echo $teacher;?></a></div>
 			<div class="lesson_genres"><?php echo $genres;?></div>
 		</div>
 
@@ -48,6 +49,8 @@ function lessons_shortcode($atts){
 	}
 	echo '</div>';
 	wp_reset_query();
+
+	wp_enqueue_style('lessons_shortcode_style'); //by enqueueing the style here, it only appears where the shortcode does.
 
 }
 
