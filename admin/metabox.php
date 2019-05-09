@@ -46,9 +46,6 @@ function teacher_meta_box_callback($post){
 }
 
 function pl_save_post($post_id){
-	if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE){
-		return;
-	}
 	if (isset($_POST['pl_teacher'])){
 		$teacher = sanitize_text_field($_POST['pl_teacher']);
 		$term = get_term_by( 'name', $teacher, 'pl_teacher' );
