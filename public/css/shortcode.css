@@ -25,7 +25,10 @@
 	font-size: 10px;
 	font-weight: 600;
 }
-.lesson_item img {width: 100%; height: auto;}
+.lesson_item img {w
+	idth: 100%;
+	height: auto;
+}
 @media only screen and (max-width: 600px){ /*Mobile phones*/
 	.lesson_item {width: 99%;}
 }
@@ -33,9 +36,9 @@
 	.lesson_item {width: 49%;}
 
 }
-@media only screen and (min-width: 960px){ /*Desktops phones*/
+@media only screen and (min-width: 960px){ /*Desktops*/
 	.lesson_item {width: 32%;}
 }
-@media only screen and (min-width: 1200px){ /*Desktops phones*/
+@media only screen and (min-width: 1200px){ /* big Desktops */
 	.lesson_item {width: 24%;}
 }
